@@ -15,6 +15,8 @@ when something goes wrong. For a quick overview see [README.md](README.md).
 | `pdf2epub.py` | The conversion pipeline itself; also usable from the command line. |
 | `requirements.txt` | The Python packages, and the exact sequence that installs them. |
 | `README.md` | Overview, requirements, verified results, contributing. |
+| `LICENSE` | MIT — the licence of the code in this repository. |
+| `THIRD-PARTY-NOTICES.md` | What the dependencies are licensed under (read this before commercial use). |
 | `.gitignore` | Keeps books, converted output and scratch files out of the repository. |
 
 ---
@@ -495,3 +497,34 @@ can be previewed straight out of the file, which is how the UI shows them.
   you are happy.
 * Editing the table of contents changes the menu only. If a chapter's *heading in
   the text* is wrong, fix it in the markdown and rebuild instead (section 7).
+
+  ---
+
+  ## 13. Licensing
+
+  The code here is **MIT** ([LICENSE](LICENSE)). Everything it depends on is
+  permissively licensed too (marker-pdf and surya-ocr are Apache-2.0, PyTorch is
+  BSD-3-Clause, llama.cpp and Pillow are MIT-ish, pypdfium2/PDFium is
+  Apache-2.0/BSD-3-Clause), so an MIT project can depend on them freely.
+
+  Two things worth knowing:
+
+  * **Pandoc is GPL-2.0-or-later.** It is only ever *executed* as a separate program
+    (never imported or linked), which is the accepted way for permissively licensed
+    tools to use GPL tools — no copyleft reaches this code. The same goes for
+    `llama-server`. If you ever *vendor* code from any of these projects into this
+    repository, that changes: you would have to keep their licence texts and
+    notices, and GPL code could not be copied in at all.
+  * **marker's model weights are not Apache-2.0.** The OCR path downloads them from
+    Hugging Face under datalab's modified **OpenRAIL-M** licence, which allows
+    personal, research and commercial use but restricts organisations above a US$5M
+    revenue/funding threshold, requires attribution, and passes its use restrictions
+    on to whoever you distribute to. The digital/text-layer path does not touch those
+    weights.
+
+  [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) has the full component list, the
+  licence summary and what to do if you redistribute this tool. Nothing there
+  changes the MIT licence of this repository's code.
+
+  Finally, the obvious one: converting a book does not give you rights to it. Use
+  this on documents you are allowed to convert.

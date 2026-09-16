@@ -219,10 +219,28 @@ lines of Python with no dependencies beyond marker, Pillow, pypdfium2 and pandoc
 
 ## Notes
 
+* **Licence: MIT** — see [LICENSE](LICENSE). It is deliberately permissive so the
+  code can be reused, forked and shipped. The pieces it depends on keep their own
+  licences; the one that needs care is explained below.
 * **No book files are in this repository.** `.gitignore` keeps PDFs, EPUBs and
   the sample output out of it. Use this on documents you are allowed to convert.
 * Please report issues rather than opening PRs that add books as test fixtures.
-* License: none specified yet — ask if you want to reuse this.
+
+### Dependencies and their licences
+
+Everything the code depends on is permissively licensed (Apache-2.0, BSD-3-Clause,
+MIT, MIT-CMU), and Pandoc — which is GPL — is only ever *executed* as a separate
+program, never linked, so nothing here inherits its copyleft.
+
+**One exception worth reading:** marker's model weights, which the *scanned-PDF*
+path downloads on first use, are under datalab's **OpenRAIL-M** licence rather than
+Apache-2.0. That licence permits personal, research and commercial use, but it
+forbids use by organisations above a US$5M revenue/funding threshold, requires
+attribution, and passes its use restrictions on to whoever you distribute to.
+
+There is a short, plain-language breakdown — plus the full list of components and
+licences — in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). If you only ever
+use the digital/text-layer path, no model weights are involved at all.
 
 ## Files
 
@@ -233,3 +251,4 @@ lines of Python with no dependencies beyond marker, Pillow, pypdfium2 and pandoc
 | `start_ui.bat` | launcher that finds the marker virtualenv |
 | `requirements.txt` | the packages and the exact install sequence |
 | `MANUAL.md` | the detailed manual and troubleshooting table |
+| `THIRD-PARTY-NOTICES.md` | licences of the components this depends on |
