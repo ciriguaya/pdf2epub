@@ -1,0 +1,21 @@
+# Books and everything derived from them stay out of this repository.
+*.pdf
+*.epub
+*.mobi
+epub_out/
+_work/
+_verify/
+
+# Scratch files from development / debugging sessions
+_*.py
+_*.log
+
+# The private debugging log this project grew out of
+priorAIConversation.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+marker_env/

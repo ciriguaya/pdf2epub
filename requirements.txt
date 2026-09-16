@@ -1,0 +1,30 @@
+# Python packages needed by the PDF -> EPUB pipeline.
+#
+# This file is a record of the verified versions; it is NOT a one-shot installer.
+# The packages must live in the dedicated virtual environment (marker_env), never
+# in your system Python - marker-pdf pins its own torch/pillow/numpy and would
+# otherwise fight with your other ML projects.
+#
+# The exact sequence that produced the working environment on this machine:
+#
+#   python -m venv C:\Users\<you>\marker_env
+#   C:\Users\<you>\marker_env\Scripts\Activate.ps1
+#   pip install --upgrade pip
+#   pip install marker-pdf
+#   pip install torch==2.6.0+cu124 torchvision ^
+#       --index-url https://download.pytorch.org/whl/cu124 --force-reinstall
+#
+# Do NOT run "pip install -r requirements.txt" against an environment that
+# already has the CUDA build: marker-pdf's metadata asks for torch>=2.7, no
+# CUDA 12.4 wheel of 2.7 exists, and pip would quietly replace the CUDA torch
+# with the CPU-only build from PyPI. OCR would then crawl or fail.
+# The "dependency conflicts" warnings pip prints about torch and pillow are
+# expected here and can be ignored.
+#
+# pandoc is not a pip package; it is the system binary that writes the EPUB:
+#   winget install --exact --id JohnMacFarlane.Pandoc
+
+marker-pdf==2.0.0
+surya-ocr==0.22.1
+pypdfium2>=5.0
+pillow
